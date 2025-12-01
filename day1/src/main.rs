@@ -35,44 +35,34 @@ fn part_one(input: &[isize]) -> usize {
 }
 
 fn part_two(input: &[isize]) -> usize {
-    let mut count = 0;
-    let mut direction = 50isize;
-    for val in input {
-        let (sanitized_val, cnt) = sanitize(direction, *val);
-        count += cnt;
-        if sanitized_val == 0 {
-            println!("=====================================");
-        }
-        println!("{direction} {val} {sanitized_val} {cnt} {count}");
-
-        direction = sanitized_val;
-    }
-
-    count
+    input
+        .iter()
+        .fold((50isize, 0usize), |(direction, count), val| {
+            let (new_direction, cnt) = sanitize(direction, *val);
+            (new_direction, count + cnt)
+        })
+        .1
 }
 
 fn sanitize(direction: isize, val: isize) -> (isize, usize) {
-    let mut x = direction + val;
+    let mut target = direction + val;
     let mut count = 0;
-    if x % 100 == 0 && val < 0 {
-        count += 1;
+    let rem = target.div_euclid(100);
+    target += rem * -100;
+    count += rem.abs() as usize;
+    if val < 0 {
+        if direction == 0 {
+            count -= 1;
+        }
+        if target == 0 {
+            count += 1;
+        }
     }
-    while x < 0 {
-        x += 100;
-        count += 1;
-    }
-    while x >= 100 {
-        x -= 100;
-        count += 1;
-    }
-    if direction == 0 && val < 0 {
-        count -= 1;
-    }
-    if count == 0 && x == 0 {
+    if target == 0 && count == 0 {
         count = 1;
     }
 
-    (x, count)
+    (target, count)
 }
 
 fn parse(input: &str) -> Vec<isize> {
