@@ -49,7 +49,7 @@ fn sanitize(direction: isize, val: isize) -> (isize, usize) {
     let mut count = 0;
     let rem = target.div_euclid(100);
     target += rem * -100;
-    count += rem.abs() as usize;
+    count += rem.unsigned_abs();
     if val < 0 {
         if direction == 0 {
             count -= 1;
