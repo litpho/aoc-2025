@@ -101,7 +101,7 @@ mod test {
         let (ranges, ingredients) = parse(TESTDATA)?;
 
         let res = part_one(&ranges, &ingredients);
-        assert_eq!(3, res);
+        assert_eq!(res, 3);
 
         Ok(())
     }
@@ -111,7 +111,7 @@ mod test {
         let (ranges, ingredients) = parse(DATA)?;
 
         let res = part_one(&ranges, &ingredients);
-        assert_eq!(517, res);
+        assert_eq!(res, 517);
 
         Ok(())
     }
@@ -121,7 +121,7 @@ mod test {
         let (ranges, _) = parse(TESTDATA)?;
 
         let res = part_two(&ranges);
-        assert_eq!(14, res);
+        assert_eq!(res, 14);
 
         Ok(())
     }
@@ -131,7 +131,7 @@ mod test {
         let (ranges, _) = parse(DATA)?;
 
         let res = part_two(&ranges);
-        assert_eq!(336173027056994, res);
+        assert_eq!(res, 336173027056994);
 
         Ok(())
     }

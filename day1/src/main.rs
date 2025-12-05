@@ -86,24 +86,24 @@ mod tests {
 
     #[test]
     fn test_part_one_testdata() {
-        assert_eq!(3, part_one(&parse(TESTDATA)));
+        assert_eq!(part_one(&parse(TESTDATA)), 3);
     }
 
     #[test]
     fn test_part_one() {
         let input = parse(DATA);
-        assert_eq!(1123, part_one(&input));
+        assert_eq!(part_one(&input), 1123);
     }
 
     #[test]
     fn test_part_two_testdata() {
         let input = parse(TESTDATA);
-        assert_eq!(6, part_two(&input));
+        assert_eq!(part_two(&input), 6);
     }
 
     #[test]
     fn test_part_two() {
         let input = parse(DATA);
-        assert_eq!(6695, part_two(&input));
+        assert_eq!(part_two(&input), 6695);
     }
 }
