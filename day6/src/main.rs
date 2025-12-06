@@ -2,24 +2,11 @@ use anyhow::Result;
 use nom::{
     branch::alt,
     bytes::complete::tag,
-    character::complete::{
-        self,
-        line_ending,
-        one_of,
-        space0,
-        space1
-    },
+    character::complete::{self, line_ending, one_of, space0, space1},
     combinator::value,
-    multi::{
-        many1,
-        separated_list1
-    },
-    sequence::{
-        preceded,
-        separated_pair
-    },
-    IResult,
-    Parser
+    multi::{many1, separated_list1},
+    sequence::{preceded, separated_pair},
+    IResult, Parser,
 };
 use std::str::FromStr;
 
